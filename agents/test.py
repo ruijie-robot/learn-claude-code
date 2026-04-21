@@ -38,7 +38,19 @@ def main() -> None:
 
     parts = []
     for block in response.content:
-        print(block.text)
+        if block.type == "text":
+            print(block.text)
+        elif block.type == "thinking":
+            print(block.thinking)
+        elif block.type == "tool_use":
+            print(block.tool_use)
+        elif block.type == "tool_result":
+            print(block.tool_result)
+        elif block.type == "tool_error":
+            print(block.tool_error)
+        elif block.type == "tool_timeout":
+            print(block.tool_timeout)
+        # print(block.text)
     #     if getattr(block, "type", None) == "text" and getattr(block, "text", None):
     #         parts.append(block.text)
 
