@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "bash",
+        "command": "./scripts/check-dangerous-commands.sh",
+        "type": "command"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "write_file",
+        "command": "./scripts/format-on-write.py",
+        "type": "command"
+      }
+    ],
+    "SessionStart": [
+      {
+        "type": "prompt",
+        "prompt": "当前项目是 {{project_name}}，请记住以下关键信息：\n- 使用 Python 3.11+\n- 遵循 PEP 8 规范\n- 测试使用 pytest"
+      }
+    ]
+  }
+}
